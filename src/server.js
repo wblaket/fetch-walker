@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.get('/api/dogs/:dogid', async (req, res) => {
   try {
     const client = await MongoClient.connect('mongodb://localhost/27017', { useNewUrlParser: true});
-    const db = client.db('dog-gwalker');
+    const db = client.db('dog-walker');
     console.log(`Test worked!`);
     const dogID = req.params.dogid;
     const dogInfo = await db.collection('dogs').findOne({ id: dogID });
@@ -67,5 +67,5 @@ app.get('*', (req, res) => {
 
 // Create listener.
 app.listen(port, () => {
-  console.log(`Express listening on port: http://localhost:localhost:${port}`);
+  console.log(`Express listening on port:${port}`);
   });
